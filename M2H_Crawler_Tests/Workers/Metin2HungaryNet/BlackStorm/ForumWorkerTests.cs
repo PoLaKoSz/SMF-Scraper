@@ -14,7 +14,7 @@ namespace M2H_Crawler_Tests.Workers.Metin2HungaryNet.BlackStorm
         private ISmfTheme Theme = new BlackStormTheme();
 
         [TestMethod]
-        public void BlackStormTheme_GetForumBoardsWithoutAuthentication()
+        public void BlackStormTheme_GetForumBoards_WithoutAuthentication()
         {
             var expected = new List<IWebpage>()
             {
@@ -41,7 +41,7 @@ namespace M2H_Crawler_Tests.Workers.Metin2HungaryNet.BlackStorm
         }
         
         [TestMethod]
-        public void BlackStormTheme_GetForumCategoriesWithoutAuthentication()
+        public void BlackStormTheme_GetForumCategories_WithoutAuthentication()
         {
             var expected = new List<Category>()
             {

@@ -29,5 +29,17 @@ namespace M2H_Crawler.Models
         /// XPath for the forum's boards link
         /// </summary>
         string ForumBoardLink { get; }
+
+
+
+        /// <summary>
+        /// XPath to the current board children boards to extract each one of it to a Board Model
+        /// </summary>
+        string BoardChildrenBoards { get; }
+
+        /// <summary>
+        /// XPath to extract the board children board name to the Board Model
+        /// </summary>
+        string BoardChildrenBoardName { get; }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using M2H_Crawler.Themes.Metin2HungaryNet;
 using M2H_Crawler.Workers;
-using System;
+using System.IO;
 
 namespace M2H_Crawler
 {
@@ -8,15 +8,10 @@ namespace M2H_Crawler
 	{
 		static void Main(string[] args)
         {
-            var theme        = new BlackStormTheme();
-            var forumRootUrl = new Uri("http://metin2hungary.dev/");
+            var sourceCode = File.ReadAllText(@"../../../M2H_Crawler_Tests\bin\Debug\StaticResource\Metin2Hungary.net\Board\BlackStorm\2018_04_25_NonAuthenticated.html");
+            var      board = new BoardWorker(sourceCode, new BlackStormTheme());
 
-            var scrapper = new NonAuthenticated(forumRootUrl, theme);
-            scrapper.Run();
-
-            Console.WriteLine("Press any key to continue ...");
-            Console.Read();
-
+            board.GetChildrenBoards();
         }
     }
 }

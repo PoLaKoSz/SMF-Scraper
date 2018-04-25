@@ -57,11 +57,11 @@
     <Compile Include="Models\Topic.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sajt.cs" />
     <Compile Include="Themes\Metin2HungaryNet\HeraclesTheme.cs" />
     <Compile Include="Themes\Metin2HungaryNet\BlackStormTheme.cs" />
     <Compile Include="Workers\Authenticated.cs" />
     <Compile Include="Workers\BoardWorker.cs" />
+    <Compile Include="Workers\CategoryExtractor.cs" />
     <Compile Include="Workers\ForumWorker.cs" />
     <Compile Include="Workers\NonAuthenticated.cs" />
     <Compile Include="Workers\Paginator.cs" />

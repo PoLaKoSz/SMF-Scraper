@@ -38,6 +38,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="HtmlAgilityPack, Version=1.8.1.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a" />
     <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\MSTest.TestFramework.1.2.0\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.dll</HintPath>
     </Reference>
@@ -48,6 +49,8 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Workers\CategoryExtractorTests.cs" />
+    <Compile Include="Workers\Metin2HungaryNet\BlackStorm\BoardWorkerTests.cs" />
     <Compile Include="Workers\Metin2HungaryNet\Heracles DDMT2\HeraclesForumWorkerTests.cs" />
     <Compile Include="Workers\Metin2HungaryNet\BlackStorm\ForumWorkerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -56,13 +59,16 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ConsoleApp\M2H Crawler.csproj">
+    <ProjectReference Include="..\M2H_Crawler\M2H Crawler.csproj">
       <Project>{4eb3583c-e172-43e3-8f4b-82935d35f3c3}</Project>
       <Name>M2H Crawler</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="StaticResource\Metin2Hungary.net\Board\BlackStorm\2018_04_25_NonAuthenticated.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="StaticResource\Metin2Hungary.net\HomePage\BlackStorm\2018_04_24_NonAuthenticated.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

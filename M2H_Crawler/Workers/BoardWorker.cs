@@ -7,6 +7,9 @@ namespace M2H_Crawler.Workers
 {
     public class BoardWorker : Webpage, IWebpage
     {
+        public BoardWorker(string sourceCode, ISmfTheme websiteTheme)
+            : base(sourceCode, websiteTheme) { }
+
         public BoardWorker(Uri boardURL, ISmfTheme websiteTheme)
             : base(boardURL, websiteTheme) { }
 
@@ -63,6 +66,40 @@ namespace M2H_Crawler.Workers
             }
 
             return nextWebpages;
+        }
+
+        /// <summary>
+        /// Extract the current Board children Boards
+        /// </summary>
+        /// <returns></returns>
+        public List<Board> GetChildrenBoards()
+        {
+            var htmlDoc = new HtmlDocument();
+            htmlDoc.LoadHtml(base.SourceCode);
+
+            var childrenBoardsCollection = htmlDoc.DocumentNode.SelectNodes(Theme.BoardChildrenBoards);
+
+            var childBoards = new List<Board>();
+
+            if (childrenBoardsCollection == null)
+                return childBoards;
+            
+            int categoryID = new CategoryExtractor(htmlDoc.DocumentNode).GetIDFromNavigationSection();
+
+            foreach (var chieldBoard in childrenBoardsCollection)
+            {
+                int      boardID = Convert.ToInt32(chieldBoard.Id.Substring(6));
+                string boardName = chieldBoard.SelectSingleNode(Theme.BoardChildrenBoardName).InnerText;
+
+                childBoards.Add(new Board(boardID, categoryID, boardName, childBoards.Count));
+            }
+
+            return childBoards;
+        }
+
+        public List<Topic> GetBoardTopics()
+        {
+            return new List<Topic>();
         }
     }
 }
