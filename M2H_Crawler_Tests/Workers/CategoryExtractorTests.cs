@@ -8,7 +8,7 @@ namespace M2H_Crawler_Tests.Workers
     public class CategoryExtractorTests
     {
         [TestMethod]
-        public void BlackStormTheme_GetIDFromNavigationSection_WithoutAuthentication()
+        public void BlackStormTheme_WithoutAuthentication_CategoryExtractor_GetIDFromNavigationSection()
         {
             var expected = 2;
 

@@ -11,7 +11,7 @@ namespace M2H_Crawler_Tests.Workers.Metin2HungaryNet.BlackStorm
     public class BoardWorkerTests
     {
         [TestMethod]
-        public void BlackStormTheme_GetChildrenBoards_WithoutAuthentication()
+        public void BlackStormTheme_WithoutAuthentication_BoardWorker_GetChildrenBoards()
         {
             var expected = new List<Board>()
             {
