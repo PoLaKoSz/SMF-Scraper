@@ -2,6 +2,7 @@
 using M2H_Crawler.Models;
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace M2H_Crawler.Workers
 {
@@ -97,9 +98,38 @@ namespace M2H_Crawler.Workers
             return childBoards;
         }
 
+        /// <summary>
+        /// Return every Topic in this Board webpage
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="FormatException"></exception>
+        /// <exception cref="OverflowException"></exception>
+        /// <exception cref="RegexMatchTimeoutException"></exception>
         public List<Topic> GetBoardTopics()
         {
-            return new List<Topic>();
+            var htmlDoc = new HtmlDocument();
+            htmlDoc.LoadHtml(base.SourceCode);
+
+            var topicCollection = htmlDoc.DocumentNode.SelectNodes(Theme.BoardTopicModel);
+
+            var boardTopics = new List<Topic>();
+
+            if (topicCollection == null)
+                return boardTopics;
+
+            foreach (var topic in topicCollection)
+            {
+                var asd = topic.SelectSingleNode(Theme.BoardTopicLink);
+                var  topicURL = topic.SelectSingleNode(Theme.BoardTopicLink).Attributes["href"].Value;
+                int   topicID = Convert.ToInt32(Regex.Match(topicURL, @"(?<=topic,)\d+").Value);
+                var topicName = topic.SelectSingleNode(Theme.BoardTopicLink).InnerText.Trim();
+
+                boardTopics.Add(new Topic(topicID, topicName));
+            }
+
+            return boardTopics;
         }
     }
 }

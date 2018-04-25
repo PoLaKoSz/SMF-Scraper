@@ -1,17 +1,22 @@
 ﻿using M2H_Crawler.Themes.Metin2HungaryNet;
 using M2H_Crawler.Workers;
-using System.IO;
+using System;
 
 namespace M2H_Crawler
 {
 	class Program
 	{
-		static void Main(string[] args)
+        static void Main(string[] args)
         {
-            var sourceCode = File.ReadAllText(@"../../../M2H_Crawler_Tests\bin\Debug\StaticResource\Metin2Hungary.net\Board\BlackStorm\2018_04_25_NonAuthenticated.html");
-            var      board = new BoardWorker(sourceCode, new BlackStormTheme());
+            var theme        = new BlackStormTheme();
+            var forumRootUrl = new Uri("http://metin2hungary.dev/");
 
-            board.GetChildrenBoards();
+            var scrapper = new NonAuthenticated(forumRootUrl, theme);
+            scrapper.Run();
+
+            Console.WriteLine("Press any key to continue ...");
+            Console.Read();
+
         }
     }
 }

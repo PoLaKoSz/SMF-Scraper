@@ -44,6 +44,17 @@ namespace M2H_Crawler.Themes.Metin2HungaryNet
         public string BoardChildrenBoardName { get; private set; }
 
 
+        /// <summary>
+        /// XPath to extract the current Board's topics to a Topic Model
+        /// </summary>
+        public string BoardTopicModel { get; private set; }
+
+        /// <summary>
+        /// XPath to the Topic URL
+        /// </summary>
+        public string BoardTopicLink { get; private set; }
+
+
 
         public BlackStormTheme()
         {
@@ -56,8 +67,11 @@ namespace M2H_Crawler.Themes.Metin2HungaryNet
             ForumBoards    = "//div[@id='boardindex_table']//table//tbody[@class='content']//tr[@class='windowbg2']//td[@class='info']";
             ForumBoardLink = ".//a";
 
-            BoardChildrenBoards = "//div[@class='tborder childboards']//div[@class='table_frame']//table[@class='table_list']//tbody[@class='content']//tr";
+            BoardChildrenBoards    = "//div[@class='tborder childboards']//div[@class='table_frame']//table[@class='table_list']//tbody[@class='content']//tr";
             BoardChildrenBoardName = ".//td[@class='info']//a";
+
+            BoardTopicModel = "//div[@id='messageindex']//table[@class='table_grid']//tbody//tr";
+            BoardTopicLink  = ".//td[contains(@class, 'subject')]//div//span//a";
         }
     }
 }
