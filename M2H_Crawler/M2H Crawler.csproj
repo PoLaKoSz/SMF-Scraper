@@ -47,10 +47,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Converters\BBConverter.cs" />
+    <Compile Include="Converters\EmojiConverter.cs" />
+    <Compile Include="Converters\TextColorConverter.cs" />
     <Compile Include="Models\Attachment.cs" />
     <Compile Include="Models\Board.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Forum.cs" />
+    <Compile Include="Models\ForumSettings.cs" />
     <Compile Include="Models\ISmfTheme.cs" />
     <Compile Include="Models\IWebpage.cs" />
     <Compile Include="Models\Message.cs" />
@@ -63,6 +67,7 @@
     <Compile Include="Workers\BoardWorker.cs" />
     <Compile Include="Workers\CategoryExtractor.cs" />
     <Compile Include="Workers\ForumWorker.cs" />
+    <Compile Include="Workers\HtmlCleaner.cs" />
     <Compile Include="Workers\NonAuthenticated.cs" />
     <Compile Include="Workers\Paginator.cs" />
     <Compile Include="Workers\TopicWorker.cs" />

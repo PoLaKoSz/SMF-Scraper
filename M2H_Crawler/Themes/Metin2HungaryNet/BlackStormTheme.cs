@@ -56,6 +56,33 @@ namespace M2H_Crawler.Themes.Metin2HungaryNet
 
 
 
+        /// <summary>
+        /// XPath to extract the current Topic's messages to a Message Model
+        /// </summary>
+        public string TopicMessageModel { get; private set; }
+
+        /// <summary>
+        /// XPath to the Topic URL with the current Message
+        /// </summary>
+        public string TopicMessageLink { get; private set; }
+
+        /// <summary>
+        /// XPath to the current Message posted time section
+        /// </summary>
+        public string TopicMessagePostedTime { get; private set; }
+
+        /// <summary>
+        /// XPath to the current Message body section
+        /// </summary>
+        public string TopicMessageBody { get; private set; }
+
+        /// <summary>
+        /// XPath to the current Message edited section
+        /// </summary>
+        public string TopicMessageEdited { get; private set; }
+
+
+
         public BlackStormTheme()
         {
             ForumCategories       = "//div[@id='boardindex_table']//table//tbody[@class='header' or @class='content']";
@@ -72,6 +99,12 @@ namespace M2H_Crawler.Themes.Metin2HungaryNet
 
             BoardTopicModel = "//div[@id='messageindex']//table[@class='table_grid']//tbody//tr";
             BoardTopicLink  = ".//td[contains(@class, 'subject')]//div//span//a";
+
+            TopicMessageModel      = "//div[@id='forumposts']//form//div[@class='windowbg' or @class='windowbg2']//div[@class='post_wrapper']";
+            TopicMessageLink       = ".//div[@class='postarea']//div[@class='flow_hidden']//div[@class='keyinfo']//h5[contains(@id, 'subject_')]//a";
+            TopicMessagePostedTime = ".//div[@class='postarea']//div[@class='flow_hidden']//div[@class='keyinfo']//div[@class='smalltext']//text()[2]";
+            TopicMessageBody       = ".//div[@class='postarea']//div[@class='post']//div[@class='inner']";
+            TopicMessageEdited     = ".//div[@class='moderatorbar']//div[@class='smalltext modified']//em";
         }
     }
 }

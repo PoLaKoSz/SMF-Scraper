@@ -49,11 +49,14 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Converters\EmojiConverterTests.cs" />
+    <Compile Include="Converters\TextColorConverterTests.cs" />
     <Compile Include="Workers\CategoryExtractorTests.cs" />
     <Compile Include="Workers\Metin2HungaryNet\BlackStorm\BoardWorkerTests.cs" />
     <Compile Include="Workers\Metin2HungaryNet\Heracles DDMT2\HeraclesForumWorkerTests.cs" />
     <Compile Include="Workers\Metin2HungaryNet\BlackStorm\ForumWorkerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Workers\TopicWorkerTets.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -73,6 +76,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="StaticResource\Metin2Hungary.net\HomePage\BlackStorm\2018_04_24_NonAuthenticated.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="StaticResource\Metin2Hungary.net\Topic\BlackStorm\2018_04_25_NonAuthenticated.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

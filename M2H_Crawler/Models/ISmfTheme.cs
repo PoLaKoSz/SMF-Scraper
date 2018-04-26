@@ -52,5 +52,31 @@ namespace M2H_Crawler.Models
         /// XPath to the Topic URL
         /// </summary>
         string BoardTopicLink { get; }
+
+
+        /// <summary>
+        /// XPath to extract the current Topic's messages to a Message Model
+        /// </summary>
+        string TopicMessageModel { get; }
+
+        /// <summary>
+        /// XPath to the Topic URL with the current Message
+        /// </summary>
+        string TopicMessageLink { get; }
+
+        /// <summary>
+        /// XPath to the current Message posted time section
+        /// </summary>
+        string TopicMessagePostedTime { get; }
+
+        /// <summary>
+        /// XPath to the current Message body section
+        /// </summary>
+        string TopicMessageBody { get; }
+
+        /// <summary>
+        /// XPath to the current Message edited section
+        /// </summary>
+        string TopicMessageEdited { get; }
     }
 }
