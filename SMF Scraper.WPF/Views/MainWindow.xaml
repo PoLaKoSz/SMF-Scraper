@@ -31,7 +31,7 @@
                 </HierarchicalDataTemplate>
 
                 <DataTemplate DataType="{x:Type models:Message}">
-                    <userControls:TreeViewItemDesign/>
+                    <TextBlock Text="{Binding Name}"/>
                 </DataTemplate>
             </TreeView.Resources>
         </TreeView>
