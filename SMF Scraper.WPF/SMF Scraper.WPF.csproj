@@ -107,5 +107,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\BitBucket\windows-pmusic\Libs\Framework\Framework\Framework.csproj">
+      <Project>{8e14b309-c75a-4f36-97d4-ebd2eb3358d7}</Project>
+      <Name>Framework</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

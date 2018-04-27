@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMF Scraper.Tests", "SMF Sc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMF Scraper.WPF", "SMF Scraper.WPF\SMF Scraper.WPF.csproj", "{34A90C11-D6AF-4B47-9B3A-7CE817495BDD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApp1", "WindowsFormsApp1\WindowsFormsApp1.csproj", "{7B2539BB-3C07-4CFC-A0F9-97B9C33E1049}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework", "..\..\BitBucket\windows-pmusic\Libs\Framework\Framework\Framework.csproj", "{8E14B309-C75A-4F36-97D4-EBD2EB3358D7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{34A90C11-D6AF-4B47-9B3A-7CE817495BDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{34A90C11-D6AF-4B47-9B3A-7CE817495BDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{34A90C11-D6AF-4B47-9B3A-7CE817495BDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B2539BB-3C07-4CFC-A0F9-97B9C33E1049}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B2539BB-3C07-4CFC-A0F9-97B9C33E1049}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B2539BB-3C07-4CFC-A0F9-97B9C33E1049}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B2539BB-3C07-4CFC-A0F9-97B9C33E1049}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E14B309-C75A-4F36-97D4-EBD2EB3358D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E14B309-C75A-4F36-97D4-EBD2EB3358D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E14B309-C75A-4F36-97D4-EBD2EB3358D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E14B309-C75A-4F36-97D4-EBD2EB3358D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

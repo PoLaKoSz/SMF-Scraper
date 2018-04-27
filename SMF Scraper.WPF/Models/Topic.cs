@@ -4,9 +4,12 @@ namespace SMF_Scraper.WPF.Models
 {
     public class Topic : ForumNode, IForumNode
     {
-        public List<IForumNode> Messages { get; protected set; }
-        
+        public List<IForumNode> Messages { get; set; }
 
+
+
+        public Topic(string topicName)
+            : this(topicName, new List<IForumNode>()) { }
 
         public Topic(string topicName, List<IForumNode> topicMessage)
         {

@@ -18,6 +18,8 @@
         </WrapPanel>
         
         <ProgressBar IsIndeterminate="{Binding IsScrapingInProgress}"
+                     Value="100"
+                     Height="10"
                      DockPanel.Dock="Bottom"/>
     </StackPanel>
 </UserControl>

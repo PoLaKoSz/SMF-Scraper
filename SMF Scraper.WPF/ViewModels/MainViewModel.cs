@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Threading.Tasks;
 
 namespace SMF_Scraper.WPF.ViewModels
@@ -22,25 +23,69 @@ namespace SMF_Scraper.WPF.ViewModels
 
             //ProgressBarTest();
 
-            FakeForumScraping();
+            SlowCategoryMaker();
+
+            //FakeForumScraping();
         }
 
-        Random Random { get; set; }
-        private void FakeForumScraping()
+        private async void SlowCategoryMaker()
+        {
+            var taskList = new List<Task>();
+
+            for (int i = 0; i < 10; i++)
+                taskList.Add(DoIt(i));
+            
+            await Task.WhenAll(taskList.ToArray());
+        }
+
+        private async Task DoIt(int index)
+        {
+            Debug.Write("Started " + index + "\n");
+
+            var category = new Category("Category #" + (index + 1), new List<IForumNode>())
+            {
+                IsScrapingInProgress = true
+            };
+
+            Categories.Insert(index, category);
+
+            var rand = Random.Next(5, 10);
+
+            Debug.Write("Waiting #" + index + " DoIt()" + rand * 1000 + "sec\n");
+
+            await Task.Delay(1000 * rand);
+
+            Categories[index].IsScrapingInProgress = false;
+
+            Debug.Write("Eneded " + index + "\n");
+        }
+
+        Random Random { get; set; } = new Random();
+        private async void FakeForumScraping()
         {
             Random = new Random();
 
+            var taskList = new List<Task>();
+
             for (int i = 1; i < 3; i++)
-                AddFakeCategories();
+                taskList.Add(AddFakeCategories());
+
+            await Task.WhenAll(taskList.ToArray());
         }
 
-        private void AddFakeCategories()
+        private async Task AddFakeCategories()
         {
-            for (int i = 1; i < Random.Next(5); i++)
-                Categories.Add(new Category("Category #" + i, AddFakeBoards()));
+            var taskList = new List<Task>();
+
+            for (int i = 1; i < Random.Next(10); i++)
+            {
+                Categories.Add(new Category("Category #" + i, await AddFakeBoards()) { IsScrapingInProgress = false });
+            }
+            
+            await Task.WhenAll(taskList.ToArray());
         }
 
-        private List<IForumNode> AddFakeBoards()
+        private async Task<List<IForumNode>> AddFakeBoards()
         {
             var boardCollection = new List<IForumNode>();
 
@@ -48,16 +93,18 @@ namespace SMF_Scraper.WPF.ViewModels
             {
                 var childrenBoards = new List<IForumNode>();
 
-                if (Random.Next(10) == 0)
-                    childrenBoards = AddFakeBoards();
+                await Task.Delay(1000 * Random.Next(10));
 
-                boardCollection.Add(new Board("Board #" + i, childrenBoards, AddFakeTopics()));
+                if (Random.Next(10) == 0)
+                    childrenBoards = await AddFakeBoards();
+
+                boardCollection.Add(new Board("Board #" + i, childrenBoards, await AddFakeTopics()));
             }
 
             return boardCollection;
         }
 
-        private List<IForumNode> AddFakeTopics()
+        private async Task<List<IForumNode>> AddFakeTopics()
         {
             var topicCollection = new List<IForumNode>();
 
@@ -65,10 +112,16 @@ namespace SMF_Scraper.WPF.ViewModels
             {
                 var messageCollection = new List<IForumNode>();
 
-                for (int k = 0; k < Random.Next(5); k++)
-                    messageCollection.Add(new Message("Message #" + k));
+                var topic = new Topic("Topic #" + i);
 
-                topicCollection.Add(new Topic("Topic #" + i, messageCollection));
+                await Task.Delay(1000 * Random.Next(10));
+
+                for (int k = 0; k < Random.Next(5); k++)
+                    messageCollection.Add(new Message("Message #" + k) { IsScrapingInProgress = false });
+
+                topic.Messages = messageCollection;
+
+                topicCollection.Add(topic);
             }
 
             return topicCollection;
