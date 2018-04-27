@@ -18,12 +18,12 @@ namespace SMF_Scraper.WPF.ViewModels
             View = new MainWindow(this);
             View.Show();
 
-            StartTheProgram();
+            ProgressBarTest();
         }
 
 
 
-        private async void StartTheProgram()
+        private async void ProgressBarTest()
         {
             //await UpdateProgressBar();
         }

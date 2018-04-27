@@ -5,6 +5,7 @@
         Height="450"
         Width="800"
         xmlns:models="clr-namespace:SMF_Scraper.WPF.Models"
+        xmlns:userControls="clr-namespace:SMF_Scraper.WPF.Views.Controls"
         WindowStartupLocation="CenterScreen">
     <StackPanel>
         <TreeView HorizontalAlignment="Stretch"
@@ -18,21 +19,21 @@
 
             <TreeView.Resources>
                 <HierarchicalDataTemplate DataType="{x:Type models:Category}" ItemsSource="{Binding Boards}">
-                    <TextBlock Text="{Binding Path=Name}" />
+                    <userControls:TreeViewItemDesign/>
                 </HierarchicalDataTemplate>
                 
                 <HierarchicalDataTemplate DataType="{x:Type models:Board}"
                                           ItemsSource="{Binding Path=AllNodes}">
-                    <TextBlock Text="{Binding Path=Name}" />
+                    <userControls:TreeViewItemDesign/>
                 </HierarchicalDataTemplate>
 
                 <HierarchicalDataTemplate DataType="{x:Type models:Topic}"
                                           ItemsSource = "{Binding Path=Messages}">
-                    <TextBlock Text="{Binding Path=Name}" />
+                    <userControls:TreeViewItemDesign/>
                 </HierarchicalDataTemplate>
 
                 <DataTemplate DataType="{x:Type models:Message}">
-                    <TextBlock Text="{Binding Path=Name}" />
+                    <userControls:TreeViewItemDesign/>
                 </DataTemplate>
             </TreeView.Resources>
         </TreeView>

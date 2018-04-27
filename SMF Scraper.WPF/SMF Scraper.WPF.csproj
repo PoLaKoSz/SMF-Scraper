@@ -54,6 +54,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Views\Controls\TreeViewItemDesign.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -63,12 +67,16 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\ForumNode.cs" />
     <Compile Include="Models\Message.cs" />
     <Compile Include="Models\Board.cs" />
     <Compile Include="Models\IForumNode.cs" />
     <Compile Include="Models\TestData.cs" />
     <Compile Include="Models\Topic.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="Views\Controls\TreeViewItemDesign.xaml.cs">
+      <DependentUpon>TreeViewItemDesign.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

@@ -1,6 +1,6 @@
 ﻿namespace SMF_Scraper.WPF.Models
 {
-    public class Message : IForumNode
+    public class Message : ForumNode, IForumNode
     {
         public string Name { get; set; }
     }

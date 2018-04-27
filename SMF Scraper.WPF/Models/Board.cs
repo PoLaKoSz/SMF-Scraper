@@ -2,7 +2,7 @@
 
 namespace SMF_Scraper.WPF.Models
 {
-    public class Board : IForumNode
+    public class Board : ForumNode, IForumNode
     {
         public int Key { get; set; }
         public string Name { get; set; }
