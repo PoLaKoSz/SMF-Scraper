@@ -2,6 +2,11 @@
 {
     public class Message : ForumNode, IForumNode
     {
-        public string Name { get; set; }
+        public Message() { }
+
+        public Message(string messsageText)
+        {
+            Name = messsageText;
+        }
     }
 }

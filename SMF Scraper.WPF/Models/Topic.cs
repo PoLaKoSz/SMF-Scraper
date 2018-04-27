@@ -4,15 +4,15 @@ namespace SMF_Scraper.WPF.Models
 {
     public class Topic : ForumNode, IForumNode
     {
-        public string Name { get; private set; }
-        public List<IForumNode> Messages { get; set; }
+        public List<IForumNode> Messages { get; protected set; }
         
 
 
-        public Topic(string topicName)
+        public Topic(string topicName, List<IForumNode> topicMessage)
         {
-            Name     = topicName;
-            Messages = new List<IForumNode>();
+            Name           = topicName;
+            Messages       = topicMessage;
+            RemainingCount = Messages.Count;
         }
     }
 }

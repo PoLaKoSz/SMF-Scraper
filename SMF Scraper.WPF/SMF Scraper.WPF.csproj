@@ -71,7 +71,6 @@
     <Compile Include="Models\Message.cs" />
     <Compile Include="Models\Board.cs" />
     <Compile Include="Models\IForumNode.cs" />
-    <Compile Include="Models\TestData.cs" />
     <Compile Include="Models\Topic.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="Views\Controls\TreeViewItemDesign.xaml.cs">

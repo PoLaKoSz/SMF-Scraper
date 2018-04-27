@@ -4,11 +4,20 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <DockPanel>
-        <TextBlock Text="{Binding Name}"
-                   DockPanel.Dock="Top"/>
-        <ProgressBar IsIndeterminate="True"
+             d:DesignWidth="100" d:DesignHeight="50" >
+    <StackPanel>
+        <WrapPanel>
+            <TextBlock>
+                <TextBlock.Text>
+                    <MultiBinding StringFormat="{}{0} ({1})">
+                        <Binding Path="Name"/>
+                        <Binding Path="RemainingCount"/>
+                    </MultiBinding>
+                </TextBlock.Text>
+            </TextBlock>
+        </WrapPanel>
+        
+        <ProgressBar IsIndeterminate="{Binding IsScrapingInProgress}"
                      DockPanel.Dock="Bottom"/>
-    </DockPanel>
+    </StackPanel>
 </UserControl>
