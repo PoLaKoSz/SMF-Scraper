@@ -39,7 +39,7 @@ namespace SMF_Scraper_Tests.Workers.Metin2HungaryNet.BlackStorm
 
             CollectionAssert.AreEqual(expected, actual);
         }
-        
+
         [TestMethod]
         public void BlackStormTheme_WithoutAuthentication_ForumWorker_GetForumCategories()
         {
