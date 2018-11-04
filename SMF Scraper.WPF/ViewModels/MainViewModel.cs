@@ -24,15 +24,13 @@ namespace SMF_Scraper.WPF.ViewModels
             //ProgressBarTest();
 
             SlowCategoryMaker();
-
-            //FakeForumScraping();
         }
 
         private async void SlowCategoryMaker()
         {
             var taskList = new List<Task>();
 
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 1; i++)
                 taskList.Add(DoIt(i));
             
             await Task.WhenAll(taskList.ToArray());
@@ -42,7 +40,7 @@ namespace SMF_Scraper.WPF.ViewModels
         {
             Debug.Write("Started " + index + "\n");
 
-            var category = new Category("Category #" + (index + 1), new List<IForumNode>())
+            var category = new Category("Category #" + (index + 1), await AddFakeBoards())
             {
                 IsScrapingInProgress = true
             };
@@ -61,84 +59,23 @@ namespace SMF_Scraper.WPF.ViewModels
         }
 
         Random Random { get; set; } = new Random();
-        private async void FakeForumScraping()
-        {
-            Random = new Random();
-
-            var taskList = new List<Task>();
-
-            for (int i = 1; i < 3; i++)
-                taskList.Add(AddFakeCategories());
-
-            await Task.WhenAll(taskList.ToArray());
-        }
-
-        private async Task AddFakeCategories()
-        {
-            var taskList = new List<Task>();
-
-            for (int i = 1; i < Random.Next(10); i++)
-            {
-                Categories.Add(new Category("Category #" + i, await AddFakeBoards()) { IsScrapingInProgress = false });
-            }
-            
-            await Task.WhenAll(taskList.ToArray());
-        }
 
         private async Task<List<IForumNode>> AddFakeBoards()
         {
+            var taskList = new List<Task>();
             var boardCollection = new List<IForumNode>();
 
-            for (int i = 0; i < Random.Next(10); i++)
-            {
-                var childrenBoards = new List<IForumNode>();
+            for (int i = 0; i < 2; i++)
+                taskList.Add(DoItBoard(boardCollection, i));
 
-                await Task.Delay(1000 * Random.Next(10));
-
-                if (Random.Next(10) == 0)
-                    childrenBoards = await AddFakeBoards();
-
-                boardCollection.Add(new Board("Board #" + i, childrenBoards, await AddFakeTopics()));
-            }
+            await Task.WhenAll(taskList.ToArray());
 
             return boardCollection;
         }
 
-        private async Task<List<IForumNode>> AddFakeTopics()
+        private async Task DoItBoard(List<IForumNode> boardCollection, int i)
         {
-            var topicCollection = new List<IForumNode>();
-
-            for (int i = 0; i < Random.Next(10); i++)
-            {
-                var messageCollection = new List<IForumNode>();
-
-                var topic = new Topic("Topic #" + i);
-
-                await Task.Delay(1000 * Random.Next(10));
-
-                for (int k = 0; k < Random.Next(5); k++)
-                    messageCollection.Add(new Message("Message #" + k) { IsScrapingInProgress = false });
-
-                topic.Messages = messageCollection;
-
-                topicCollection.Add(topic);
-            }
-
-            return topicCollection;
-        }
-
-        private async void ProgressBarTest()
-        {
-            await UpdateProgressBar();
-        }
-
-        private async Task UpdateProgressBar()
-        {
-            for (int i = 0; i < 100; i++)
-            {
-                //View.ProgressBar.Value = i;
-                await Task.Delay(1000);
-            }
+            await Task.Delay(1);
         }
     }
 }
