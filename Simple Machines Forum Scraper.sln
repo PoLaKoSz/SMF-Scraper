@@ -3,11 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2037
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMF Scraper", "src\SMF-Scraper\SMF Scraper.csproj", "{4EB3583C-E172-43E3-8F4B-82935D35F3C3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SMF Scraper", "src\SMF-Scraper\SMF Scraper.csproj", "{4EB3583C-E172-43E3-8F4B-82935D35F3C3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{D43D9ADA-33DC-48B8-99FB-16FBAD82859F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Integration", "tests\Integration\Integration.csproj", "{B6183A1B-46DF-4D7F-8A95-D7E279DE9680}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Integration", "tests\Integration\Integration.csproj", "{B6183A1B-46DF-4D7F-8A95-D7E279DE9680}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{7F06E5E5-FFE7-4C35-AAC4-2D00EA341A3B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Console", "samples\Console\Console.csproj", "{CA6FFD59-F13B-4FD9-8DA8-F3F4FB130186}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,12 +27,17 @@ Global
 		{B6183A1B-46DF-4D7F-8A95-D7E279DE9680}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B6183A1B-46DF-4D7F-8A95-D7E279DE9680}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B6183A1B-46DF-4D7F-8A95-D7E279DE9680}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA6FFD59-F13B-4FD9-8DA8-F3F4FB130186}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA6FFD59-F13B-4FD9-8DA8-F3F4FB130186}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA6FFD59-F13B-4FD9-8DA8-F3F4FB130186}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA6FFD59-F13B-4FD9-8DA8-F3F4FB130186}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{B6183A1B-46DF-4D7F-8A95-D7E279DE9680} = {D43D9ADA-33DC-48B8-99FB-16FBAD82859F}
+		{CA6FFD59-F13B-4FD9-8DA8-F3F4FB130186} = {7F06E5E5-FFE7-4C35-AAC4-2D00EA341A3B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {23C38D2E-3FE6-49EA-BE06-27DF424E45CE}
