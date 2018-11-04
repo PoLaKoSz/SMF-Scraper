@@ -1,9 +1,9 @@
-﻿using SMF_Scraper.Models;
+﻿using PoLaKoSz.SMF.Scraper.Models;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace SMF_Scraper.Workers
+namespace PoLaKoSz.SMF.Scraper.Workers
 {
 	public class NonAuthenticated
 	{

@@ -1,6 +1,6 @@
 ﻿using HtmlAgilityPack;
 
-namespace SMF_Scraper.Converters
+namespace PoLaKoSz.SMF.Scraper.Converters
 {
     public class EmojiConverter : BBConverter
     {

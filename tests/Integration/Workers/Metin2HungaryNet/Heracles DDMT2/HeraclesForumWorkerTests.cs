@@ -1,8 +1,8 @@
-﻿using SMF_Scraper.Models;
-using SMF_Scraper.Themes.Metin2HungaryNet;
+﻿using PoLaKoSz.SMF.Scraper.Models;
+using PoLaKoSz.SMF.Scraper.Themes.Metin2HungaryNet;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace SMF_Scraper_Tests.Workers.Metin2HungaryNet.Heracles_DDMT2
+namespace PoLaKoSz.SMF.Scraper.Tests.Integration.Workers.Metin2HungaryNet.Heracles_DDMT2
 {
 	[TestClass]
 	public class ForumWorkerTests

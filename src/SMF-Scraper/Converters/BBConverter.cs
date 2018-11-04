@@ -2,7 +2,7 @@
 using System.IO;
 using System.Linq;
 
-namespace SMF_Scraper.Converters
+namespace PoLaKoSz.SMF.Scraper.Converters
 {
     public abstract class BBConverter
     {

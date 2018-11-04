@@ -1,7 +1,7 @@
-﻿using SMF_Scraper.Models;
+﻿using PoLaKoSz.SMF.Scraper.Models;
 using System;
 
-namespace SMF_Scraper.Themes.Metin2HungaryNet
+namespace PoLaKoSz.SMF.Scraper.Themes.Metin2HungaryNet
 {
     public class HeraclesTheme// : ISmfTheme
     {

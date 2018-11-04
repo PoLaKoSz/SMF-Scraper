@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SMF_Scraper.Models
+namespace PoLaKoSz.SMF.Scraper.Models
 {
 	public class Topic
 	{

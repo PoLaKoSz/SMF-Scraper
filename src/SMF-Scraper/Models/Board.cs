@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace SMF_Scraper.Models
+namespace PoLaKoSz.SMF.Scraper.Models
 {
 	public class Board
 	{

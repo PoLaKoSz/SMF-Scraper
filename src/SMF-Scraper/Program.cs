@@ -1,8 +1,8 @@
-﻿using SMF_Scraper.Themes.Metin2HungaryNet;
-using SMF_Scraper.Workers;
+﻿using PoLaKoSz.SMF.Scraper.Themes.Metin2HungaryNet;
+using PoLaKoSz.SMF.Scraper.Workers;
 using System;
 
-namespace SMF_Scraper
+namespace PoLaKoSz.SMF.Scraper
 {
 	class Program
 	{

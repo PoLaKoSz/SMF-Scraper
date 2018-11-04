@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SMF_Scraper.Workers
+namespace PoLaKoSz.SMF.Scraper.Workers
 {
     public class Paginator
     {

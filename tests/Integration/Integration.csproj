@@ -8,8 +8,8 @@
     <ProjectGuid>{B6183A1B-46DF-4D7F-8A95-D7E279DE9680}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SMF_Scraper_Tests</RootNamespace>
-    <AssemblyName>SMF_Scraper_Tests</AssemblyName>
+    <RootNamespace>PoLaKoSz.SMF.Scraper.Tests.Integration</RootNamespace>
+    <AssemblyName>Integration</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>

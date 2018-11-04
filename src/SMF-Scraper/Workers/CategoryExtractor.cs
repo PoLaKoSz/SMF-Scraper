@@ -2,7 +2,7 @@
 using System;
 using System.Text.RegularExpressions;
 
-namespace SMF_Scraper.Workers
+namespace PoLaKoSz.SMF.Scraper.Workers
 {
     public class CategoryExtractor
     {

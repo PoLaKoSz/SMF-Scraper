@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{4EB3583C-E172-43E3-8F4B-82935D35F3C3}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>SMF_Scraper</RootNamespace>
-    <AssemblyName>SMF_Scraper</AssemblyName>
+    <RootNamespace>PoLaKoSz.SMF.Scraper</RootNamespace>
+    <AssemblyName>PoLaKoSz.SMF-Scraper</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

@@ -1,6 +1,6 @@
-﻿using SMF_Scraper.Converters;
+﻿using PoLaKoSz.SMF.Scraper.Converters;
 
-namespace SMF_Scraper.Workers
+namespace PoLaKoSz.SMF.Scraper.Workers
 {
     public class HtmlCleaner
     {

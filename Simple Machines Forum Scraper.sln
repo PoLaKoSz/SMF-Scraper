@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMF Scraper", "src\SMF-Scra
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{D43D9ADA-33DC-48B8-99FB-16FBAD82859F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMF Scraper.Tests", "tests\Integration\SMF Scraper.Tests.csproj", "{B6183A1B-46DF-4D7F-8A95-D7E279DE9680}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Integration", "tests\Integration\Integration.csproj", "{B6183A1B-46DF-4D7F-8A95-D7E279DE9680}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

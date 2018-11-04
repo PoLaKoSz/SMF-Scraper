@@ -1,8 +1,8 @@
-﻿using SMF_Scraper.Workers;
+﻿using PoLaKoSz.SMF.Scraper.Workers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
 
-namespace SMF_Scraper_Tests.Workers
+namespace PoLaKoSz.SMF.Scraper.Tests.Integration.Workers
 {
     [TestClass]
     public class CategoryExtractorTests

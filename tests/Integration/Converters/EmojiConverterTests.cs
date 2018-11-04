@@ -1,7 +1,7 @@
-﻿using SMF_Scraper.Converters;
+﻿using PoLaKoSz.SMF.Scraper.Converters;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace SMF_Scraper_Tests.Converters
+namespace PoLaKoSz.SMF.Scraper.Tests.Integration.Converters
 {
     [TestClass]
     public class EmojiConverterTests
