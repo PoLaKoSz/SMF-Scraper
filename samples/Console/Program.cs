@@ -2,13 +2,13 @@
 using PoLaKoSz.SMF.Scraper.Workers;
 using System;
 
-namespace PoLaKoSz.SMF.Scraper
+namespace PoLaKoSz.SMF.Scraper.Samples.ConsoleApp
 {
-	class Program
-	{
+    class Program
+    {
         static void Main(string[] args)
         {
-            var theme        = new BlackStormTheme();
+            var theme = new BlackStormTheme();
             var forumRootUrl = new Uri("http://metin2hungary.dev/");
 
             var scrapper = new NonAuthenticated(forumRootUrl, theme);
@@ -16,7 +16,6 @@ namespace PoLaKoSz.SMF.Scraper
 
             Console.WriteLine("Press any key to continue ...");
             Console.Read();
-
         }
     }
 }
