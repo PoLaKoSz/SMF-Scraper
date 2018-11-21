@@ -9,24 +9,21 @@ namespace PoLaKoSz.SMF.Scraper.DataAccessLayer.Web
     /// </summary>
     public abstract class EndPoint
     {
-        private static IHttpClient _client;
-        private readonly Uri _baseAddress;
+        private IHttpClient _client;
+        private readonly Uri _baseURL;
 
 
 
         /// <summary>
-        /// This ctor only for UnitTesting!
+        ///
         /// </summary>
-        /// <param name="endPoint"></param>
-        /// <param name="httpClient"></param>
-        public EndPoint(Uri endPoint, IHttpClient httpClient)
+        /// <param name="endPointPath">The derived class path in the URL</param>
+        /// <param name="baseURL">The Forum root URL</param>
+        /// <param name="httpClient">Data Access Layer class</param>
+        public EndPoint(string endPointPath, Uri baseURL, IHttpClient httpClient)
         {
-            _baseAddress = endPoint;
-
-            if (_client == null)
-            {
-                _client = httpClient;
-            }
+            _baseURL = new Uri(baseURL, $"index.php/{endPointPath}");
+            _client = httpClient;
         }
 
 
@@ -49,7 +46,7 @@ namespace PoLaKoSz.SMF.Scraper.DataAccessLayer.Web
         /// <exception cref="InvalidCastException">An unknown Exception received from the server.</exception>
         protected async Task<string> GetAsync(string parameters)
         {
-            Uri uri = new Uri(_baseAddress, parameters);
+            Uri uri = new Uri(_baseURL, parameters);
 
             var httpResponse = await _client.GetAsync(uri);
 

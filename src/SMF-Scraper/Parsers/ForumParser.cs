@@ -34,7 +34,7 @@ namespace PoLaKoSz.SMF.Scraper.Parsers
                 int categoryOrder = i / 2;
                 string categoryName = categoryHeader.InnerText.Trim();
 
-                var boardCollection = GetCategorieBoards(categoryID, categoryBody, theme);
+                var boardCollection = GetCategoryBoards(categoryBody, theme);
 
                 if (boardCollection.Count > 0)
                     categorieCollection.Add(new Category(categoryID, categoryOrder, categoryName, boardCollection));
@@ -46,7 +46,7 @@ namespace PoLaKoSz.SMF.Scraper.Parsers
         }
 
 
-        private List<Board> GetCategorieBoards(int categoryID, HtmlNode categoryBody, ISmfTheme theme)
+        private List<Board> GetCategoryBoards(HtmlNode categoryBody, ISmfTheme theme)
         {
             var boardCollection = new List<Board>();
 
@@ -59,15 +59,14 @@ namespace PoLaKoSz.SMF.Scraper.Parsers
                 int boardID = Convert.ToInt32(board.Id.Substring(6));
                 string boardName = board.SelectSingleNode(theme.ForumBoardName).InnerText.Trim();
                 string boardDescription = board.SelectSingleNode(theme.ForumBoardDescription).InnerText.Trim();
-                int boardOrder = boardCollection.Count;
 
                 if (HasChildrenBoards(boardNodes, i))
                 {
-                    boardCollection.Add(new Board(boardID, categoryID, boardName, boardDescription, boardOrder, GetBoardChieldBoards(categoryID, boardNodes[i + 1], theme)));
+                    boardCollection.Add(new Board(boardID, boardName, boardDescription, GetBoardChieldBoards(boardNodes[i + 1], theme)));
                     i++;//prevent crawling children board and step to the next board
                 }
                 else
-                    boardCollection.Add(new Board(boardID, categoryID, boardName, boardDescription, boardOrder));
+                    boardCollection.Add(new Board(boardID, boardName, boardDescription));
             }
 
             return boardCollection;
@@ -81,7 +80,7 @@ namespace PoLaKoSz.SMF.Scraper.Parsers
             return boardNodes[currentIndex + 1].Id.Contains("_children");
         }
 
-        private List<Board> GetBoardChieldBoards(int categoryID, HtmlNode parentBoard, ISmfTheme theme)
+        private List<Board> GetBoardChieldBoards(HtmlNode parentBoard, ISmfTheme theme)
         {
             var boardCollection = new List<Board>();
 
@@ -99,9 +98,8 @@ namespace PoLaKoSz.SMF.Scraper.Parsers
 
                 int boardID = Convert.ToInt32(match.Value);
                 string boardName = board.InnerText;
-                int boardOrder = i;
 
-                boardCollection.Add(new Board(boardID, categoryID, boardName, "", boardOrder));
+                boardCollection.Add(new Board(boardID, boardName));
             }
 
             return boardCollection;

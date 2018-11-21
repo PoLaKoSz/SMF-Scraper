@@ -14,7 +14,7 @@ namespace PoLaKoSz.SMF.Scraper.EndPoints
 
 
         public ForumEndPoint(ForumSettings settings, IHttpClient httpClient)
-            : base(settings.RootURL, httpClient)
+            : base(settings.CustomHomePageURL, settings.RootURL, httpClient)
         {
             _theme = settings.Theme;
             _parser = new ForumParser();

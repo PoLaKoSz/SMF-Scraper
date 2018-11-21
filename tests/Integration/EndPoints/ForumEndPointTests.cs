@@ -32,42 +32,42 @@ namespace PoLaKoSz.SMF.Scraper.Tests.Integration.EndPoints
         {
             var expected = new List<Category>()
             {
-                new Category(4, 0, "Hírek", new List<Board>()
+                new Category(4, 0,  "Hírek", new List<Board>()
                 {
-                    new Board(25, 4, "DDMT2 hírek",                                   "A DDMT2 szerver hírei.", 0),
-                    new Board(24, 4, "Fórum hírek", "Itt a fórummal kapcsolatos híreket/információkat találod", 1),
+                    new Board(25, "DDMT2 hírek",                                   "A DDMT2 szerver hírei."),
+                    new Board(24, "Fórum hírek", "Itt a fórummal kapcsolatos híreket/információkat találod"),
                 }),
                 new Category(2, 1, "Metin2", new List<Board>()
                 {
-                    new Board( 5, 2,              "Segítség", "A játékkal kapcsolatos kérdések.", 0, new List<Board>()
+                    new Board( 5,               "Segítség", "A játékkal kapcsolatos kérdések.", new List<Board>()
                     {
-                        new Board(80, 2, "Lezárt témák", 0),
+                        new Board(80, "Lezárt témák"),
                     }),
-                    new Board( 2, 2,    "Karakterek Építése", "Segítség a karakterek építéséhez", 1, new List<Board>()
+                    new Board( 2,     "Karakterek Építése", "Segítség a karakterek építéséhez", new List<Board>()
                     {
-                        new Board( 9, 2,   "Ninja", 0),
-                        new Board(11, 2,  "Shaman", 1),
-                        new Board(10, 2,    "Sura", 2),
-                        new Board( 8, 2, "Warrior", 3),
+                        new Board( 9,   "Ninja"),
+                        new Board(11,  "Shaman"),
+                        new Board(10,    "Sura"),
+                        new Board( 8, "Warrior"),
                     }),
-                    new Board( 1, 2,      "Tippek - Trükkök",  "Amire álmodban sem gondolnál...", 2),
-                    new Board(14, 2,            "Küldetések",               "Küldetések leírása", 3),
-                    new Board(15, 2,                "Itemek",                                 "", 4),
-                    new Board( 3, 2,                "Metin2",       "Játékkal kapcsolatos témák", 5),
-                    new Board(19, 2,         "Keres - Kínál",                                 "", 6),
-                    new Board(54, 2, "Karakter kereskedelem",                                 "", 7, new List<Board>()
+                    new Board( 1,       "Tippek - Trükkök", "Amire álmodban sem gondolnál..."),
+                    new Board(14,             "Küldetések",              "Küldetések leírása"),
+                    new Board(15,                 "Itemek"),
+                    new Board( 3,                 "Metin2",      "Játékkal kapcsolatos témák"),
+                    new Board(19,          "Keres - Kínál"),
+                    new Board(54,  "Karakter kereskedelem",                                 "", new List<Board>()
                     {
-                        new Board(55, 2, "Vásárolni akarok", 0),
-                        new Board(56, 2,    "Eladni akarok", 1),
-                        new Board(57, 2,  "Cserélni akarok", 2),
+                        new Board(55, "Vásárolni akarok"),
+                        new Board(56,    "Eladni akarok"),
+                        new Board(57,  "Cserélni akarok"),
                     }),
-                    new Board(23, 2,      "Privát szerverek",   "Nem hivatalos Metin2 szerverek", 8, new List<Board>()
+                    new Board(23,       "Privát szerverek",   "Nem hivatalos Metin2 szerverek", new List<Board>()
                     {
-                        new Board(32, 2, "ddmt2 - magyar pserver", 0),
-                        new Board(33, 2, "Egyéb privát szerverek", 1),
-                        new Board(35, 2,       "Szerver készítés", 2),
-                        new Board(70, 2,         "Computer World", 3),
-                        new Board(45, 2,       "Web - fejlesztés", 4),
+                        new Board(32, "ddmt2 - magyar pserver"),
+                        new Board(33, "Egyéb privát szerverek"),
+                        new Board(35,       "Szerver készítés"),
+                        new Board(70,         "Computer World"),
+                        new Board(45,       "Web - fejlesztés"),
                     }),
                 }),
             };

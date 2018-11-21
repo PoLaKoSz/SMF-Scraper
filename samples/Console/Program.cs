@@ -11,9 +11,12 @@ namespace PoLaKoSz.SMF.Scraper.Samples.ConsoleApp
         static void Main(string[] args)
         {
             var theme = new BlackStormTheme();
-            var rootUrl = new Uri("http://metin2hungary.net/index.php?action=forum");
+            var rootUrl = new Uri("http://metin2hungary.net/");
 
-            var forumSettings = new ForumSettings(theme, rootUrl);
+            var forumSettings = new ForumSettings(theme, rootUrl)
+            {
+                CustomHomePageURL = "action=forum"
+            };
 
             var forumHomePage = new ForumEndPoint(forumSettings, new HttpClient());
 
