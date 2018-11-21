@@ -8,7 +8,7 @@ namespace PoLaKoSz.SMF.Scraper.Models
 		public string Subject { get; set; }
 		public string Body { get; set; }
 		public DateTime PostedTime { get; set; }
-        
+
 
 
 		public Message(int messageID, string messageSubject, string messageBody, DateTime postedTime)

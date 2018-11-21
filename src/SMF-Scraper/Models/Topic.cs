@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace PoLaKoSz.SMF.Scraper.Models
 {
@@ -7,12 +8,15 @@ namespace PoLaKoSz.SMF.Scraper.Models
 		public int ID { get; private set; }
         public string Name { get; private set; }
 
+        public List<Message> Messages { get; internal set; }
+
 
 
         public Topic(int topicID, string topicName)
 		{
-			ID   = topicID;
-            Name = topicName;
+			ID       = topicID;
+            Name     = topicName;
+            Messages = new List<Message>();
 		}
 
 
@@ -31,6 +35,12 @@ namespace PoLaKoSz.SMF.Scraper.Models
                 return false;
 
             if (!Name.Equals(topic.Name))
+                return false;
+
+            if (Messages.Count != topic.Messages.Count)
+                return false;
+
+            if (!Messages.SequenceEqual(topic.Messages))
                 return false;
 
             return true;
