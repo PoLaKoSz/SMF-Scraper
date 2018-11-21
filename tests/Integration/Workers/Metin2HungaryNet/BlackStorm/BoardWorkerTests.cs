@@ -3,12 +3,16 @@ using PoLaKoSz.SMF.Scraper.Themes.Metin2HungaryNet;
 using PoLaKoSz.SMF.Scraper.Workers;
 using NUnit.Framework;
 using System.Collections.Generic;
-using System.IO;
 
 namespace PoLaKoSz.SMF.Scraper.Tests.Integration.Workers.Metin2HungaryNet.BlackStorm
 {
-    public class BoardWorkerTests
+    class BoardWorkerTests : TestClassBase
     {
+        public BoardWorkerTests()
+            : base("Metin2Hungary.net", "Board", "BlackStorm") { }
+
+
+
         public void BlackStormTheme_WithoutAuthentication_BoardWorker_GetChildrenBoards()
         {
             var expected = new List<Board>()
@@ -16,15 +20,20 @@ namespace PoLaKoSz.SMF.Scraper.Tests.Integration.Workers.Metin2HungaryNet.BlackS
                 new Board(80, 2, "Lezárt témák", 0),
             };
 
-            var sourceCode = File.ReadAllText("StaticResource/Metin2Hungary.net/Board/BlackStorm/2018_04_25_NonAuthenticated.html");
+            var sourceCode = base.GetHtmlData("2018_04_25_NonAuthenticated");
             var     actual = new BoardWorker(sourceCode, new BlackStormTheme())
                 .GetChildrenBoards();
 
             CollectionAssert.AreEqual(expected, actual);
         }
 
-        public class GetBoardTopicsMethod
+        class GetBoardTopicsMethod : TestClassBase
         {
+            public GetBoardTopicsMethod()
+                : base("Metin2Hungary.net", "Board", "BlackStorm") { }
+
+
+
             [Test]
             public void BlackStormTheme_WithoutAuthentication_BoardWorker_GetBoardTopics_FirstPage()
             {
@@ -82,7 +91,7 @@ namespace PoLaKoSz.SMF.Scraper.Tests.Integration.Workers.Metin2HungaryNet.BlackS
                     new Topic(159549, "Segitség és vélemény lb2-es farmoláshoz!"),
                 };
 
-                var sourceCode = File.ReadAllText(@"StaticResource\Metin2Hungary.net\Board\BlackStorm\2018_04_25_NonAuthenticated.html");
+                var sourceCode = base.GetHtmlData("2018_04_25_NonAuthenticated");
                 var actual = new BoardWorker(sourceCode, new BlackStormTheme())
                     .GetBoardTopics();
 
@@ -146,7 +155,7 @@ namespace PoLaKoSz.SMF.Scraper.Tests.Integration.Workers.Metin2HungaryNet.BlackS
                     new Topic(61967, "Rangolási tippek ( m )"),
                 };
 
-                var sourceCode = File.ReadAllText(@"StaticResource\Metin2Hungary.net\Board\BlackStorm\2018_04_25_02_NonAuthenticated.html");
+                var sourceCode = base.GetHtmlData("2018_04_25_02_NonAuthenticated");
                 var actual = new BoardWorker(sourceCode, new BlackStormTheme())
                     .GetBoardTopics();
 

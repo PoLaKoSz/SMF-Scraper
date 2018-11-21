@@ -73,7 +73,7 @@ namespace PoLaKoSz.SMF.Scraper.Workers
 
             return messageCollection;
         }
-        
+
         /// <summary>
         /// 
         /// </summary>

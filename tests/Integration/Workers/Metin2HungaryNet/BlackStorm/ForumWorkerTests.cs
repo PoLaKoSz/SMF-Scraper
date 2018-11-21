@@ -4,36 +4,42 @@ using PoLaKoSz.SMF.Scraper.Workers;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
-using System.IO;
 
 namespace PoLaKoSz.SMF.Scraper.Tests.Integration.Workers.Metin2HungaryNet.BlackStorm
 {
-	public class ForumWorkerTests
+	class ForumWorkerTests : TestClassBase
     {
-        private ISmfTheme Theme = new BlackStormTheme();
+        private readonly ISmfTheme _theme = new BlackStormTheme();
+
+
+
+        public ForumWorkerTests()
+            : base("Metin2Hungary.net", "HomePage", "BlackStorm") { }
+
+
 
         [Test]
         public void BlackStormTheme_WithoutAuthentication_ForumWorker_GetForumBoards()
         {
             var expected = new List<IWebpage>()
             {
-                new BoardWorker(new Uri("http://metin2hungary.net/index.php/board,25.0.html"), Theme),
-                new BoardWorker(new Uri("http://metin2hungary.net/index.php/board,24.0.html"), Theme),
+                new BoardWorker(new Uri("http://metin2hungary.net/index.php/board,25.0.html"), _theme),
+                new BoardWorker(new Uri("http://metin2hungary.net/index.php/board,24.0.html"), _theme),
 
-                new BoardWorker(new Uri("http://metin2hungary.net/index.php/board,5.0.html"), Theme),
-                new BoardWorker(new Uri("http://metin2hungary.net/index.php/board,2.0.html"), Theme),
-                new BoardWorker(new Uri("http://metin2hungary.net/index.php/board,1.0.html"), Theme),
-                new BoardWorker(new Uri("http://metin2hungary.net/index.php/board,14.0.html"), Theme),
-                new BoardWorker(new Uri("http://metin2hungary.net/index.php/board,15.0.html"), Theme),
-                new BoardWorker(new Uri("http://metin2hungary.net/index.php/board,3.0.html"), Theme),
-                new BoardWorker(new Uri("http://metin2hungary.net/index.php/board,19.0.html"), Theme),
-                new BoardWorker(new Uri("http://metin2hungary.net/index.php/board,54.0.html"), Theme),
-                new BoardWorker(new Uri("http://metin2hungary.net/index.php/board,23.0.html"), Theme),
+                new BoardWorker(new Uri("http://metin2hungary.net/index.php/board,5.0.html"), _theme),
+                new BoardWorker(new Uri("http://metin2hungary.net/index.php/board,2.0.html"), _theme),
+                new BoardWorker(new Uri("http://metin2hungary.net/index.php/board,1.0.html"), _theme),
+                new BoardWorker(new Uri("http://metin2hungary.net/index.php/board,14.0.html"), _theme),
+                new BoardWorker(new Uri("http://metin2hungary.net/index.php/board,15.0.html"), _theme),
+                new BoardWorker(new Uri("http://metin2hungary.net/index.php/board,3.0.html"), _theme),
+                new BoardWorker(new Uri("http://metin2hungary.net/index.php/board,19.0.html"), _theme),
+                new BoardWorker(new Uri("http://metin2hungary.net/index.php/board,54.0.html"), _theme),
+                new BoardWorker(new Uri("http://metin2hungary.net/index.php/board,23.0.html"), _theme),
             };
 
-            string savedSourceCode = File.ReadAllText("StaticResource/Metin2Hungary.net/HomePage/BlackStorm/2018_04_24_NonAuthenticated.html");
+            string savedSourceCode = base.GetHtmlData("2018_04_24_NonAuthenticated");
 
-            var forumScrapper = new ForumWorker(savedSourceCode, Theme);
+            var forumScrapper = new ForumWorker(savedSourceCode, _theme);
             var actual        = forumScrapper.NextWebpages();
 
             CollectionAssert.AreEqual(expected, actual);
@@ -84,9 +90,9 @@ namespace PoLaKoSz.SMF.Scraper.Tests.Integration.Workers.Metin2HungaryNet.BlackS
                 }),
             };
 
-            string savedSourceCode = File.ReadAllText("StaticResource/Metin2Hungary.net/HomePage/BlackStorm/2018_04_24_NonAuthenticated.html");
+            string savedSourceCode = base.GetHtmlData("2018_04_24_NonAuthenticated");
 
-            var forumScrapper = new ForumWorker(savedSourceCode, Theme);
+            var forumScrapper = new ForumWorker(savedSourceCode, _theme);
             var        actual = forumScrapper.GetForumCategories();
 
             CollectionAssert.AreEqual(expected, actual);
