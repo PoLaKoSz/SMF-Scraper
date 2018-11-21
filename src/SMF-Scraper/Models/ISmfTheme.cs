@@ -47,7 +47,7 @@ namespace PoLaKoSz.SMF.Scraper.Models
         /// XPath to extract the current Board's topics to a Topic Model
         /// </summary>
         string BoardTopicModel { get; }
-        
+
         /// <summary>
         /// XPath to the Topic URL
         /// </summary>

@@ -1,52 +1,34 @@
 ﻿using PoLaKoSz.SMF.Scraper.Models;
 using PoLaKoSz.SMF.Scraper.Themes.Metin2HungaryNet;
-using PoLaKoSz.SMF.Scraper.Workers;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using PoLaKoSz.SMF.Scraper.EndPoints;
 
-namespace PoLaKoSz.SMF.Scraper.Tests.Integration.Workers.Metin2HungaryNet.BlackStorm
+namespace PoLaKoSz.SMF.Scraper.Tests.Integration.EndPoints
 {
-	class ForumWorkerTests : TestClassBase
+    class ForumEndPointTests : TestClassBase
     {
-        private readonly ISmfTheme _theme = new BlackStormTheme();
+        private ForumSettings _settings;
+        private HttpClientMock _httpClient;
 
 
 
-        public ForumWorkerTests()
+        [OneTimeSetUp]
+        public void Init()
+        {
+            _settings = new ForumSettings(new BlackStormTheme(), new Uri("http://metin2hungary.test"));
+            _httpClient = new HttpClientMock();
+        }
+
+        public ForumEndPointTests()
             : base("Metin2Hungary.net", "HomePage", "BlackStorm") { }
 
 
 
         [Test]
-        public void BlackStormTheme_WithoutAuthentication_ForumWorker_GetForumBoards()
-        {
-            var expected = new List<IWebpage>()
-            {
-                new BoardWorker(new Uri("http://metin2hungary.net/index.php/board,25.0.html"), _theme),
-                new BoardWorker(new Uri("http://metin2hungary.net/index.php/board,24.0.html"), _theme),
-
-                new BoardWorker(new Uri("http://metin2hungary.net/index.php/board,5.0.html"), _theme),
-                new BoardWorker(new Uri("http://metin2hungary.net/index.php/board,2.0.html"), _theme),
-                new BoardWorker(new Uri("http://metin2hungary.net/index.php/board,1.0.html"), _theme),
-                new BoardWorker(new Uri("http://metin2hungary.net/index.php/board,14.0.html"), _theme),
-                new BoardWorker(new Uri("http://metin2hungary.net/index.php/board,15.0.html"), _theme),
-                new BoardWorker(new Uri("http://metin2hungary.net/index.php/board,3.0.html"), _theme),
-                new BoardWorker(new Uri("http://metin2hungary.net/index.php/board,19.0.html"), _theme),
-                new BoardWorker(new Uri("http://metin2hungary.net/index.php/board,54.0.html"), _theme),
-                new BoardWorker(new Uri("http://metin2hungary.net/index.php/board,23.0.html"), _theme),
-            };
-
-            string savedSourceCode = base.GetHtmlData("2018_04_24_NonAuthenticated");
-
-            var forumScrapper = new ForumWorker(savedSourceCode, _theme);
-            var actual        = forumScrapper.NextWebpages();
-
-            CollectionAssert.AreEqual(expected, actual);
-        }
-
-        [Test]
-        public void BlackStormTheme_WithoutAuthentication_ForumWorker_GetForumCategories()
+        public async Task BlackStormTheme_WithoutAuthentication_ForumWorker_GetForumCategories()
         {
             var expected = new List<Category>()
             {
@@ -90,10 +72,10 @@ namespace PoLaKoSz.SMF.Scraper.Tests.Integration.Workers.Metin2HungaryNet.BlackS
                 }),
             };
 
-            string savedSourceCode = base.GetHtmlData("2018_04_24_NonAuthenticated");
+            _httpClient.ResponseHTML = base.GetHtmlData("2018_04_24_NonAuthenticated");
 
-            var forumScrapper = new ForumWorker(savedSourceCode, _theme);
-            var        actual = forumScrapper.GetForumCategories();
+            var forumScrapper = new ForumEndPoint(_settings, _httpClient);
+            var actual = await forumScrapper.GetCategories();
 
             CollectionAssert.AreEqual(expected, actual);
         }

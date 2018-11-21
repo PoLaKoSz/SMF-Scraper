@@ -34,9 +34,7 @@ namespace PoLaKoSz.SMF.Scraper.Workers
 
         public void Run()
         {
-            ScrapeWebpage(new ForumWorker(ForumURL, Theme));
-
-            Task.WaitAll(Tasks.ToArray());
+            throw new NotImplementedException();
         }
 
         private void ScrapeWebpage(IWebpage webpage)
