@@ -1,13 +1,12 @@
 ﻿using PoLaKoSz.SMF.Scraper.Workers;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using System.IO;
 
 namespace PoLaKoSz.SMF.Scraper.Tests.Integration.Workers
 {
-    [TestClass]
     public class CategoryExtractorTests
     {
-        [TestMethod]
+        [Test]
         public void BlackStormTheme_WithoutAuthentication_CategoryExtractor_GetIDFromNavigationSection()
         {
             var expected = 2;

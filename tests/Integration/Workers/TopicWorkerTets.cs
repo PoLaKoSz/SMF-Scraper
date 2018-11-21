@@ -1,20 +1,18 @@
 ﻿using PoLaKoSz.SMF.Scraper.Models;
 using PoLaKoSz.SMF.Scraper.Themes.Metin2HungaryNet;
 using PoLaKoSz.SMF.Scraper.Workers;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.IO;
 
 namespace PoLaKoSz.SMF.Scraper.Tests.Integration.Workers
 {
-    [TestClass]
     class TopicWorkerTets
     {
-        [TestClass]
         public class GetMessagesMethod
         {
-            [TestMethod]
+            [Test]
             public void BlackStormTheme_WithoutAuthentication_TopicWorker_GetMessages_FirstPage()
             {
                 var expected = new List<Message>()

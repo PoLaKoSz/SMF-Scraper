@@ -1,15 +1,13 @@
 ﻿using PoLaKoSz.SMF.Scraper.Converters;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace PoLaKoSz.SMF.Scraper.Tests.Integration.Converters
 {
-    [TestClass]
     public class TextColorConverterTests
     {
-        [TestClass]
         public class RemoveTextColorMethod
         {
-            [TestMethod]
+            [Test]
             public void Converters_TextColor_NoHtmlTagInside()
             {
                 var expected = "[color=blue]Welcome![/color]";
@@ -20,7 +18,7 @@ namespace PoLaKoSz.SMF.Scraper.Tests.Integration.Converters
                 Assert.AreEqual(expected, actual);
             }
 
-            [TestMethod]
+            [Test]
             public void Converters_TextColor_HtmlTagInside()
             {
                 var expected = "[color=blue]<b>Welcome!</b>[/color]";

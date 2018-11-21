@@ -1,19 +1,18 @@
 ﻿using PoLaKoSz.SMF.Scraper.Models;
 using PoLaKoSz.SMF.Scraper.Themes.Metin2HungaryNet;
 using PoLaKoSz.SMF.Scraper.Workers;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.IO;
 
 namespace PoLaKoSz.SMF.Scraper.Tests.Integration.Workers.Metin2HungaryNet.BlackStorm
 {
-	[TestClass]
 	public class ForumWorkerTests
     {
         private ISmfTheme Theme = new BlackStormTheme();
 
-        [TestMethod]
+        [Test]
         public void BlackStormTheme_WithoutAuthentication_ForumWorker_GetForumBoards()
         {
             var expected = new List<IWebpage>()
@@ -40,7 +39,7 @@ namespace PoLaKoSz.SMF.Scraper.Tests.Integration.Workers.Metin2HungaryNet.BlackS
             CollectionAssert.AreEqual(expected, actual);
         }
 
-        [TestMethod]
+        [Test]
         public void BlackStormTheme_WithoutAuthentication_ForumWorker_GetForumCategories()
         {
             var expected = new List<Category>()

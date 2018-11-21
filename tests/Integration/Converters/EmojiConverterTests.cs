@@ -1,15 +1,13 @@
 ﻿using PoLaKoSz.SMF.Scraper.Converters;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace PoLaKoSz.SMF.Scraper.Tests.Integration.Converters
 {
-    [TestClass]
     public class EmojiConverterTests
     {
-        [TestClass]
         public class RemoveEmojiImagesMethod
         {
-            [TestMethod]
+            [Test]
             public void Converters_Emoji_RemoveSmiley()
             {
                 var expected = ":) Szia :)";
@@ -20,7 +18,7 @@ namespace PoLaKoSz.SMF.Scraper.Tests.Integration.Converters
                 Assert.AreEqual(expected, actual);
             }
 
-            [TestMethod]
+            [Test]
             public void Converters_Emoji_RemoveWink()
             {
                 var expected = "Hi ;)";

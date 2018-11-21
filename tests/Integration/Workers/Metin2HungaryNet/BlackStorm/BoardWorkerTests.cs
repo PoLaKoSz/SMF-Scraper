@@ -1,16 +1,14 @@
 ﻿using PoLaKoSz.SMF.Scraper.Models;
 using PoLaKoSz.SMF.Scraper.Themes.Metin2HungaryNet;
 using PoLaKoSz.SMF.Scraper.Workers;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using System.Collections.Generic;
 using System.IO;
 
 namespace PoLaKoSz.SMF.Scraper.Tests.Integration.Workers.Metin2HungaryNet.BlackStorm
 {
-    [TestClass]
     public class BoardWorkerTests
     {
-        [TestMethod]
         public void BlackStormTheme_WithoutAuthentication_BoardWorker_GetChildrenBoards()
         {
             var expected = new List<Board>()
@@ -25,10 +23,9 @@ namespace PoLaKoSz.SMF.Scraper.Tests.Integration.Workers.Metin2HungaryNet.BlackS
             CollectionAssert.AreEqual(expected, actual);
         }
 
-        [TestClass]
         public class GetBoardTopicsMethod
         {
-            [TestMethod]
+            [Test]
             public void BlackStormTheme_WithoutAuthentication_BoardWorker_GetBoardTopics_FirstPage()
             {
                 var expected = new List<Topic>()
@@ -92,7 +89,7 @@ namespace PoLaKoSz.SMF.Scraper.Tests.Integration.Workers.Metin2HungaryNet.BlackS
                 CollectionAssert.AreEqual(expected, actual);
             }
 
-            [TestMethod]
+            [Test]
             public void BlackStormTheme_WithoutAuthentication_BoardWorker_GetBoardTopics_NotFirstPage()
             {
                 var expected = new List<Topic>()
