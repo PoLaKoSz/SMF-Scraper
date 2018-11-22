@@ -7,7 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Parsers\UrlParser.cs~RF121bdce2.TMP" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="HtmlAgilityPack" Version="1.8.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="DataAccessLayer\Web\" />
   </ItemGroup>
 
 </Project>

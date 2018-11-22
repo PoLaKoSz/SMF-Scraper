@@ -5,33 +5,27 @@ namespace PoLaKoSz.SMF.Scraper.Models
 {
 	public class Board
 	{
-		public int ID { get; private set; }
-		public int CategoryID { get; set; }
-		public int Order { get; set; }
+		public int ID { get; }
 
-		public Board ParentBoard { get; set; }
-		public List<Board> ChildBoards { get; set; }
+		public Board ParentBoard { get; }
+		public List<Board> ChildBoards { get; internal set; }
 
+		public string Name { get; }
+		public string Description { get; internal set; }
 
-		public string Name { get; set; }
-		public string Description { get; set; }
-
+        public List<Topic> Topics { get; internal set; }
 
 
-        public Board(int boardID, int categoryID, string boardName, int boardOrder)
-            : this(boardID, categoryID, boardName, "", boardOrder, new List<Board>()) { }
 
-        public Board(int boardID, int categoryID, string boardName, int boardOrder, List<Board> childBoards)
-            : this(boardID, categoryID, boardName, "", boardOrder, childBoards) { }
+        public Board(int id, string name)
+            : this(id, name, "") { }
 
-        public Board(int boardID, int categoryID, string boardName, string boardDescription, int boardOrder)
-            : this(boardID, categoryID, boardName, boardDescription, boardOrder, new List<Board>()) { }
+        public Board(int boardID, string boardName, string boardDescription)
+            : this(boardID, boardName, boardDescription, new List<Board>()) { }
 
-		public Board(int boardID, int categoryID, string boardName, string boardDescription, int boardOrder, List<Board> childBoards)
+		public Board(int boardID, string boardName, string boardDescription,  List<Board> childBoards)
 		{
             ID          = boardID;
-			CategoryID  = categoryID;
-			Order       = boardOrder;
 			Name		= boardName;
 			Description = boardDescription;
             ChildBoards = childBoards;
@@ -50,12 +44,6 @@ namespace PoLaKoSz.SMF.Scraper.Models
             var board = (Board)obj;
 
             if (ID != board.ID)
-                return false;
-
-            if (CategoryID != board.CategoryID)
-                return false;
-
-            if (Order != board.Order)
                 return false;
 
             if (ParentBoard != board.ParentBoard)

@@ -31,4 +31,8 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Workers\Metin2HungaryNet\BlackStorm\" />
+  </ItemGroup>
+
 </Project>

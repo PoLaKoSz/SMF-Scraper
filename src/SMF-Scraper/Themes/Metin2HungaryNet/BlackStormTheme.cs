@@ -4,6 +4,8 @@ namespace PoLaKoSz.SMF.Scraper.Themes.Metin2HungaryNet
 {
     public class BlackStormTheme : ISmfTheme
     {
+        public string NavigationParts { get; }
+
         /// <summary>
         /// XPath for the forum categories container to extract into a Categorie Model
         /// </summary>
@@ -23,12 +25,12 @@ namespace PoLaKoSz.SMF.Scraper.Themes.Metin2HungaryNet
         /// <summary>
         /// XPath for the forum's boards
         /// </summary>
-        public string ForumBoards { get; private set; }
+        public string BoardModel { get; private set; }
 
         /// <summary>
         /// XPath for the forum's boards link
         /// </summary>
-        public string ForumBoardLink { get; private set; }
+        public string BoardModelLink { get; private set; }
 
 
 
@@ -43,6 +45,8 @@ namespace PoLaKoSz.SMF.Scraper.Themes.Metin2HungaryNet
         /// </summary>
         public string BoardChildrenBoardName { get; private set; }
 
+
+        public string BoardContainer { get; }
 
         /// <summary>
         /// XPath to extract the current Board's topics to a Topic Model
@@ -85,19 +89,21 @@ namespace PoLaKoSz.SMF.Scraper.Themes.Metin2HungaryNet
 
         public BlackStormTheme()
         {
+            NavigationParts = "//div[@class='navigate_section']//ul//li//a";
+
             ForumCategories       = "//div[@id='boardindex_table']//table//tbody[@class='header' or @class='content']";
             ForumBoard            = ".//tr[not(contains (@class, 'sub_cat'))]";
             ForumBoardName        = ".//td[@class='info']//a[@class='subject']";
             ForumBoardDescription = ".//td[@class='info']//p";
             ForumBoardChieldBoard = ".//td//a";
 
-            ForumBoards    = "//div[@id='boardindex_table']//table//tbody[@class='content']//tr[@class='windowbg2']//td[@class='info']";
-            ForumBoardLink = ".//a";
-
-            BoardChildrenBoards    = "//div[@class='tborder childboards']//div[@class='table_frame']//table[@class='table_list']//tbody[@class='content']//tr";
+            BoardContainer         = "//div[@id='bodybg']//table//tr//td";
+            //BoardModel             = ".//div[@class='tborder childboards']//div[@class='table_frame']//table//tbody[@class='content']";
+            BoardModelLink         = ".//a";
+            BoardChildrenBoards    = ".//div[@class='tborder childboards']//div[@class='table_frame']//table[@class='table_list']//tbody[@class='content']//tr";
             BoardChildrenBoardName = ".//td[@class='info']//a";
 
-            BoardTopicModel = "//div[@id='messageindex']//table[@class='table_grid']//tbody//tr";
+            BoardTopicModel = ".//div[@id='messageindex']//table[@class='table_grid']//tbody//tr";
             BoardTopicLink  = ".//td[contains(@class, 'subject')]//div//span//a";
 
             TopicMessageModel      = "//div[@id='forumposts']//form//div[@class='windowbg' or @class='windowbg2']//div[@class='post_wrapper']";

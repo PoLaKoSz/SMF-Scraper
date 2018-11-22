@@ -1,5 +1,7 @@
-﻿using PoLaKoSz.SMF.Scraper.Themes.Metin2HungaryNet;
-using PoLaKoSz.SMF.Scraper.Workers;
+﻿using PoLaKoSz.SMF.Scraper.DataAccessLayer.Web;
+using PoLaKoSz.SMF.Scraper.EndPoints;
+using PoLaKoSz.SMF.Scraper.Models;
+using PoLaKoSz.SMF.Scraper.Themes.Metin2HungaryNet;
 using System;
 
 namespace PoLaKoSz.SMF.Scraper.Samples.ConsoleApp
@@ -9,10 +11,16 @@ namespace PoLaKoSz.SMF.Scraper.Samples.ConsoleApp
         static void Main(string[] args)
         {
             var theme = new BlackStormTheme();
-            var forumRootUrl = new Uri("http://metin2hungary.dev/");
+            var rootUrl = new Uri("http://metin2hungary.net/");
 
-            var scrapper = new NonAuthenticated(forumRootUrl, theme);
-            scrapper.Run();
+            var forumSettings = new ForumSettings(theme, rootUrl)
+            {
+                CustomHomePageURL = "action=forum"
+            };
+
+            var forumHomePage = new ForumEndPoint(forumSettings, new HttpClient());
+
+            var forumCategories = forumHomePage.GetCategories().GetAwaiter().GetResult();
 
             Console.WriteLine("Press any key to continue ...");
             Console.Read();

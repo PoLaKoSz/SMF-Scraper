@@ -4,6 +4,8 @@ namespace PoLaKoSz.SMF.Scraper.Models
 {
     public interface ISmfTheme
     {
+        string NavigationParts { get; }
+
         /// <summary>
         /// XPath to the forum categories container to extract into a Categorie Model
         /// </summary>
@@ -20,15 +22,17 @@ namespace PoLaKoSz.SMF.Scraper.Models
         string ForumBoardChieldBoard { get; }
 
 
+        string BoardContainer { get; }
+
         /// <summary>
         /// XPath for the forum's boards
         /// </summary>
-        string ForumBoards { get; }
+        string BoardModel { get; }
 
         /// <summary>
         /// XPath for the forum's boards link
         /// </summary>
-        string ForumBoardLink { get; }
+        string BoardModelLink { get; }
 
 
 
@@ -47,7 +51,7 @@ namespace PoLaKoSz.SMF.Scraper.Models
         /// XPath to extract the current Board's topics to a Topic Model
         /// </summary>
         string BoardTopicModel { get; }
-        
+
         /// <summary>
         /// XPath to the Topic URL
         /// </summary>
