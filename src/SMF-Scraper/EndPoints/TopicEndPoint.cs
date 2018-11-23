@@ -23,13 +23,11 @@ namespace PoLaKoSz.SMF.Scraper.EndPoints
 
 
 
-        public async Task<Topic> Info(Topic topic, int page = 0)
+        public async Task<RootObject<Topic>> Info(Topic topic, int page = 0)
         {
             string sourceCode = await base.GetAsync($"{_urlParser.Separator}{topic.ID}.{page}");
 
-            _parser.Execute(topic, sourceCode, _theme, _urlParser);
-
-            return topic;
+            return _parser.Execute(topic, sourceCode, _theme, _urlParser);
         }
     }
 }

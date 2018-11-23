@@ -23,13 +23,11 @@ namespace PoLaKoSz.SMF.Scraper.Workers
 
 
 
-        public async Task<Board> Info(Board board, int page = 0)
+        public async Task<RootObject<Board>> Info(Board board, int page = 0)
         {
             string sourceCode = await base.GetAsync($"{_urlParser.Separator}{board.ID}.{page}");
 
-            _parser.Execute(board, sourceCode, _theme, _urlParser);
-
-            return board;
+            return _parser.Execute(board, sourceCode, _theme, _urlParser);
         }
     }
 }

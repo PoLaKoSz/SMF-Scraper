@@ -7,9 +7,9 @@ using System.Text.RegularExpressions;
 
 namespace PoLaKoSz.SMF.Scraper.Parsers
 {
-    class TopicParser
+    class TopicParser : Paginator
     {
-        public void Execute(Topic topic, string sourceCode, ISmfTheme theme, IUrlParser urlParser)
+        public RootObject<Topic> Execute(Topic topic, string sourceCode, ISmfTheme theme, IUrlParser urlParser)
         {
             var htmlDoc = new HtmlDocument();
             htmlDoc.LoadHtml(sourceCode);
@@ -21,6 +21,11 @@ namespace PoLaKoSz.SMF.Scraper.Parsers
 
             foreach (var messageNode in messageNodes)
                 ParseMessage(topic.Messages, messageNode, theme);
+
+            int? prevPage = base.PreviousPage(sourceCode);
+            int? nextPage = base.NextPage(sourceCode);
+
+            return new RootObject<Topic>(topic, prevPage, nextPage);
         }
 
 

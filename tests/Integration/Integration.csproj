@@ -20,6 +20,9 @@
     <None Update="StaticResource\Metin2Hungary.net\Board\BlackStorm\2018_04_25_02_NonAuthenticated.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="StaticResource\Metin2Hungary.net\Board\BlackStorm\2018_04_25_03_NonAuthenticated.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="StaticResource\Metin2Hungary.net\Board\BlackStorm\2018_04_25_NonAuthenticated.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -27,6 +30,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="StaticResource\Metin2Hungary.net\Topic\BlackStorm\2018_04_25_NonAuthenticated.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="StaticResource\Metin2Hungary.net\Topic\BlackStorm\2018_11_22_03_NonAuthenticated.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="StaticResource\Metin2Hungary.net\Topic\BlackStorm\2018_11_22_04_NonAuthenticated.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

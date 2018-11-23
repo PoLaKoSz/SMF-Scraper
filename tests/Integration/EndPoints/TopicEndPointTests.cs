@@ -4,43 +4,195 @@ using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using PoLaKoSz.SMF.Scraper.EndPoints;
-using System.Threading.Tasks;
+using PoLaKoSz.SMF.Scraper.Parsers;
 
 namespace PoLaKoSz.SMF.Scraper.Tests.Integration.EndPoints
 {
-    class TopicEndPointTests : TestClassBase
+    class TopicEndPointTests
     {
-        private ForumSettings _settings;
-        private HttpClientMock _httpClient;
-
-
-
-        [OneTimeSetUp]
-        public void Init()
+        class FirstPage : TestClassBase
         {
-            _settings = new ForumSettings(new BlackStormTheme(), new Uri("http://metin2hungary.test"));
-            _httpClient = new HttpClientMock();
+            private readonly RootObject<Topic> _endPointResponse;
+
+
+
+            public FirstPage()
+                : base("Metin2Hungary.net", "Topic", "BlackStorm")
+            {
+                var httpClient = new HttpClientMock();
+                var settings = new ForumSettings(new BlackStormTheme(), new Uri("https://polakosz.hu"), new CommaUrlParser());
+                var endPoint = new TopicEndPoint(settings, httpClient);
+
+                httpClient.ResponseHTML = base.GetHtmlData("2018_04_25_NonAuthenticated");
+                _endPointResponse = endPoint.Info(new Topic(66925, "Gyors pénzszerzési ötletek azoknak akik 0ról kezdik ( m )")).GetAwaiter().GetResult();
+            }
+
+
+
+            [Test]
+            public void Can_Extract_Messages()
+            {
+                var expected = new List<Message>()
+                {
+
+                };
+
+                var actual = _endPointResponse.Data.Messages;
+
+                foreach (var message in actual)
+                {
+                    System.IO.File.AppendAllText("page_1.txt", $"new Message({message.ID}, \"{message.Subject}\", \"{message.Body}\", new DateTime({message.PostedTime.Year},{message.PostedTime.Month},{message.PostedTime.Day}, {message.PostedTime.Hour},{message.PostedTime.Minute},{message.PostedTime.Second}, DateTimeKind.Utc)),\n");
+                }
+
+                CollectionAssert.AreEqual(expected, actual);
+            }
+
+            [Test]
+            public void HasPreviousPage_Should_Be_False()
+            {
+                Assert.That(_endPointResponse.HasPreviousPage, Is.False, "_endPointResponse.HasPreviousPage");
+            }
+
+            [Test]
+            public void PreviousPage_Should_Be_Null()
+            {
+                Assert.That(_endPointResponse.PreviousPage, Is.Null, "_endPointResponse.HasPreviousPage");
+            }
+
+            [Test]
+            public void HasNextPage_Should_Be_True()
+            {
+                Assert.That(_endPointResponse.HasNextPage, Is.True, "_endPointResponse.HasNextPage");
+            }
+
+            [Test]
+            public void NextPage_Should_Be_2()
+            {
+                Assert.That(_endPointResponse.NextPage, Is.EqualTo(2), "_endPointResponse.NextPage");
+            }
         }
 
-        public TopicEndPointTests()
-            : base("Metin2Hungary.net", "Topic", "BlackStorm") { }
-
-
-
-        [Test]
-        public async Task Can_Extract_From_First_Page()
+        class ThirdPage : TestClassBase
         {
-            var expected = new List<Message>()
+            private readonly RootObject<Topic> _endPointResponse;
+
+
+
+            public ThirdPage()
+                : base("Metin2Hungary.net", "Topic", "BlackStorm")
             {
-                new Message(487697, "Gyors pénzszerzési ötletek azoknak akik 0ról kezdik ( m )", "Tisztelt Játékosok!<br>Ezt a topicot azért nyitottam mert szeretném megnézni a véleményetek, hogy szerintetek hogy lehet gyorsan pénzhez jutni ha valaki 0-ról kezdi a játékot azaz semmi fegyver és semmi cucc.<br>Azért is kérdezem mivel nekem újra kellett kezdenem 0-ról, illetve más játékosoknak akik hasonló cipöben vannak mint én azoknak is elönyére válhat.<br>Elöre is várom a véleményeteket, ötleteteket!<br>Addig is további kellemes DDMT-zést, és Kellemes Húsvétot mindenkinek!<br>Tisztelettel: Empo444", new DateTime(2011,4,24, 20,37,0, DateTimeKind.Utc)),
-            };
+                var httpClient = new HttpClientMock();
+                var settings = new ForumSettings(new BlackStormTheme(), new Uri("https://polakosz.hu"), new CommaUrlParser());
+                var endPoint = new TopicEndPoint(settings, httpClient);
 
-            _httpClient.ResponseHTML = base.GetHtmlData("2018_04_25_NonAuthenticated");
-            var topic = await new TopicEndPoint(_settings, _httpClient).Info(new Topic(-1, "FakeTopic"));
+                httpClient.ResponseHTML = base.GetHtmlData("2018_11_22_03_NonAuthenticated");
+                _endPointResponse = endPoint.Info(new Topic(66925, "Gyors pénzszerzési ötletek azoknak akik 0ról kezdik ( m )")).GetAwaiter().GetResult();
+            }
 
-            Assert.That(topic.Messages, Is.Not.Null, "actual.Messages");
-            Assert.That(topic.Messages.Count, Is.EqualTo(25), "actual.Messages.Count");
-            Assert.That(topic.Messages[0], Is.EqualTo(expected[0]), "topic.Messages[0]");
+
+
+            [Test]
+            public void Can_Extract_Messages()
+            {
+                var expected = new List<Message>()
+                {
+                };
+
+                var actual = _endPointResponse.Data.Messages;
+
+                foreach (var message in actual)
+                {
+                    System.IO.File.AppendAllText("page_3.txt", $"new Message({message.ID}, \"{message.Subject}\", \"{message.Body}\", new DateTime({message.PostedTime.Year},{message.PostedTime.Month},{message.PostedTime.Day}, {message.PostedTime.Hour},{message.PostedTime.Minute},{message.PostedTime.Second}, DateTimeKind.Utc)),\n");
+                }
+
+                CollectionAssert.AreEqual(expected, actual);
+            }
+
+            [Test]
+            public void HasPreviousPage_Should_Be_True()
+            {
+                Assert.That(_endPointResponse.HasPreviousPage, Is.True, "_endPointResponse.HasPreviousPage");
+            }
+
+            [Test]
+            public void PreviousPage_Should_Be_2()
+            {
+                Assert.That(_endPointResponse.PreviousPage, Is.EqualTo(2), "_endPointResponse.HasPreviousPage");
+            }
+
+            [Test]
+            public void HasNextPage_Should_Be_True()
+            {
+                Assert.That(_endPointResponse.HasNextPage, Is.True, "_endPointResponse.HasNextPage");
+            }
+
+            [Test]
+            public void NextPage_Should_Be_4()
+            {
+                Assert.That(_endPointResponse.NextPage, Is.EqualTo(4), "_endPointResponse.NextPage");
+            }
+        }
+
+        class LastPage : TestClassBase
+        {
+            private readonly RootObject<Topic> _endPointResponse;
+
+
+
+            public LastPage()
+                : base("Metin2Hungary.net", "Topic", "BlackStorm")
+            {
+                var httpClient = new HttpClientMock();
+                var settings = new ForumSettings(new BlackStormTheme(), new Uri("https://polakosz.hu"), new CommaUrlParser());
+                var endPoint = new TopicEndPoint(settings, httpClient);
+
+                httpClient.ResponseHTML = base.GetHtmlData("2018_11_22_04_NonAuthenticated");
+                _endPointResponse = endPoint.Info(new Topic(66925, "Gyors pénzszerzési ötletek azoknak akik 0ról kezdik ( m )")).GetAwaiter().GetResult();
+            }
+
+
+
+            [Test]
+            public void Can_Extract_Messages()
+            {
+                var expected = new List<Message>()
+                {
+
+                };
+
+                var actual = _endPointResponse.Data.Messages;
+
+                foreach (var message in actual)
+                {
+                    System.IO.File.AppendAllText("page_4.txt", $"new Message({message.ID}, \"{message.Subject}\", \"{message.Body}\", new DateTime({message.PostedTime.Year},{message.PostedTime.Month},{message.PostedTime.Day}, {message.PostedTime.Hour},{message.PostedTime.Minute},{message.PostedTime.Second}, DateTimeKind.Utc)),\n");
+                }
+
+                CollectionAssert.AreEqual(expected, actual);
+            }
+
+            [Test]
+            public void HasPreviousPage_Should_Be_True()
+            {
+                Assert.That(_endPointResponse.HasPreviousPage, Is.True, "_endPointResponse.HasPreviousPage");
+            }
+
+            [Test]
+            public void PreviousPage_Should_Be_3()
+            {
+                Assert.That(_endPointResponse.PreviousPage, Is.EqualTo(3), "_endPointResponse.HasPreviousPage");
+            }
+
+            [Test]
+            public void HasNextPage_Should_Be_False()
+            {
+                Assert.That(_endPointResponse.HasNextPage, Is.False, "_endPointResponse.HasNextPage");
+            }
+
+            [Test]
+            public void NextPage_Should_Be_Null()
+            {
+                Assert.That(_endPointResponse.NextPage, Is.Null, "_endPointResponse.NextPage");
+            }
         }
     }
 }

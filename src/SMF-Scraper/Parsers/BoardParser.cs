@@ -4,9 +4,9 @@ using System.Collections.Generic;
 
 namespace PoLaKoSz.SMF.Scraper.Parsers
 {
-    public class BoardParser
+    internal class BoardParser : Paginator
     {
-        public void Execute(Board board, string sourceCode, ISmfTheme theme, IUrlParser urlParser)
+        public RootObject<Board> Execute(Board board, string sourceCode, ISmfTheme theme, IUrlParser urlParser)
         {
             var htmlDoc = new HtmlDocument();
             htmlDoc.LoadHtml(sourceCode);
@@ -17,6 +17,11 @@ namespace PoLaKoSz.SMF.Scraper.Parsers
             board.ChildBoards = ParseChildrenBoards(boardMainFrameNode, theme);
 
             board.Topics = ParseTopics(boardMainFrameNode, theme, urlParser);
+
+            int? prevPage = base.PreviousPage(sourceCode);
+            int? nextPage = base.NextPage(sourceCode);
+
+            return new RootObject<Board>(board, prevPage, nextPage);
         }
 
 
