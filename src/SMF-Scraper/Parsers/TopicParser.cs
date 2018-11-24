@@ -1,6 +1,6 @@
 ﻿using HtmlAgilityPack;
+using PoLaKoSz.SMF.Scraper.Converters;
 using PoLaKoSz.SMF.Scraper.Models;
-using PoLaKoSz.SMF.Scraper.Workers;
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
@@ -35,7 +35,8 @@ namespace PoLaKoSz.SMF.Scraper.Parsers
 
             var msgSubject = msgAnchor.InnerText;
 
-            var msgBody = new HtmlCleaner().Remove(node.SelectSingleNode(theme.TopicMessageBody).InnerHtml);
+            var msgBody = new BBConverter(node.SelectSingleNode(theme.TopicMessageBody).InnerHtml)
+                    .EverythingFromHTML();
 
             var postedTime = DateTime.Parse(rawPostedTime).ToUniversalTime();
 

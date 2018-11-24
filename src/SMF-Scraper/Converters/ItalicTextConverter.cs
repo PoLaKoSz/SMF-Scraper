@@ -2,22 +2,22 @@
 
 namespace PoLaKoSz.SMF.Scraper.Converters
 {
-    public class EmojiConverter : BBConverterBase
+    public class ItalicTextConverter : BBConverterBase
     {
         public override ICoinverter Clone()
         {
-            return new EmojiConverter();
+            return new ItalicTextConverter();
         }
 
 
         public override string BBCode(HtmlNode htmlNode)
         {
-            return htmlNode.Attributes["alt"].Value;
+            return $"[i]{htmlNode.InnerHtml}[/i]";
         }
 
         public override string HtmlTag()
         {
-            return "img[@class='smiley']";
+            return "em";
         }
     }
 }

@@ -3,36 +3,25 @@ using System.Text.RegularExpressions;
 
 namespace PoLaKoSz.SMF.Scraper.Converters
 {
-    public class TextColorConverter : BBConverter
+    public class TextColorConverter : BBConverterBase
     {
-        public TextColorConverter(string sourceCode)
-            : base(sourceCode) { }
-
-
-
-        /// <summary>
-        /// Remove every HTML <span> tag with the bbc_color className from the
-        /// source code and replace it with [color=xx] span content [/color] BB code
-        /// </summary>
-        /// <returns></returns>
-        public string RemoveTextColor()
+        public override ICoinverter Clone()
         {
-            base.ReplaceThisTag("//span[@class='bbc_color']");
-
-            return base.SaveChanges();
+            return new TextColorConverter();
         }
 
-        /// <summary>
-        /// Implementation what should the code do on the found XPath elements
-        /// </summary>
-        /// <param name="htmlNode"></param>
-        /// <returns>This string will replace the found XPath element</returns>
-        protected override string ReplaceToThis(HtmlNode htmlNode)
+
+        public override string BBCode(HtmlNode htmlNode)
         {
             // For example     color: red;
             string fontColor = htmlNode.Attributes["style"].Value;
 
-            return string.Format("[color={0}]{1}[/color]", Regex.Match(fontColor, @"(?<=color: )\w+"), htmlNode.InnerHtml);
+            return string.Format("[color={0}]{1}[/color]", Regex.Match(fontColor, @"((?<=color: )\w+|(?<=color: )#\w+)"), htmlNode.InnerHtml);
+        }
+
+        public override string HtmlTag()
+        {
+            return "span[@class='bbc_color']";
         }
     }
 }
