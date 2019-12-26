@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27428.2037
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SMF Scraper", "src\SMF-Scraper\SMF Scraper.csproj", "{4EB3583C-E172-43E3-8F4B-82935D35F3C3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMF-API", "src\SMF-API\SMF-API.csproj", "{EB0A6503-2B79-493F-B882-1AA96637EE42}"
+EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{D43D9ADA-33DC-48B8-99FB-16FBAD82859F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Integration", "tests\Integration\Integration.csproj", "{B6183A1B-46DF-4D7F-8A95-D7E279DE9680}"
@@ -31,6 +33,10 @@ Global
 		{CA6FFD59-F13B-4FD9-8DA8-F3F4FB130186}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA6FFD59-F13B-4FD9-8DA8-F3F4FB130186}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CA6FFD59-F13B-4FD9-8DA8-F3F4FB130186}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB0A6503-2B79-493F-B882-1AA96637EE42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB0A6503-2B79-493F-B882-1AA96637EE42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB0A6503-2B79-493F-B882-1AA96637EE42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB0A6503-2B79-493F-B882-1AA96637EE42}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
